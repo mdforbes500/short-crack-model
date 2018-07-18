@@ -308,32 +308,32 @@ src/ShortCrack.cc.s:
 	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/ShortCrack.cc.s
 .PHONY : src/ShortCrack.cc.s
 
-src/short-crack-model.o: src/short-crack-model.cc.o
+src/main.o: src/main.cc.o
 
-.PHONY : src/short-crack-model.o
+.PHONY : src/main.o
 
 # target to build an object file
-src/short-crack-model.cc.o:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/short-crack-model.cc.o
-.PHONY : src/short-crack-model.cc.o
+src/main.cc.o:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/main.cc.o
+.PHONY : src/main.cc.o
 
-src/short-crack-model.i: src/short-crack-model.cc.i
+src/main.i: src/main.cc.i
 
-.PHONY : src/short-crack-model.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-src/short-crack-model.cc.i:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/short-crack-model.cc.i
-.PHONY : src/short-crack-model.cc.i
+src/main.cc.i:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/main.cc.i
+.PHONY : src/main.cc.i
 
-src/short-crack-model.s: src/short-crack-model.cc.s
+src/main.s: src/main.cc.s
 
-.PHONY : src/short-crack-model.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-src/short-crack-model.cc.s:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/short-crack-model.cc.s
-.PHONY : src/short-crack-model.cc.s
+src/main.cc.s:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/main.cc.s
+.PHONY : src/main.cc.s
 
 # Help Target
 help:
@@ -361,9 +361,9 @@ help:
 	@echo "... src/ShortCrack.o"
 	@echo "... src/ShortCrack.i"
 	@echo "... src/ShortCrack.s"
-	@echo "... src/short-crack-model.o"
-	@echo "... src/short-crack-model.i"
-	@echo "... src/short-crack-model.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

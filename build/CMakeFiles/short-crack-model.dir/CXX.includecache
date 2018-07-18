@@ -80,9 +80,7 @@ RightHandSide.cc
 BoundaryValues.cc
 /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/BoundaryValues.cc
 
-/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/short-crack-model.cc
-ShortCrack.h
-/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/ShortCrack.h
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/main.cc
 ShortCrack.cc
 /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/ShortCrack.cc
 

@@ -9,8 +9,6 @@
 
 using namespace dealii;
 
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^HEADER^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
-
 int main ()
 {
   deallog.depth_console (0);
