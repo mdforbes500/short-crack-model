@@ -12,6 +12,8 @@ ShortCrack<dim>::ShortCrack ()
 template <int dim>
 void ShortCrack<dim>::make_grid ()
 {
+
+  //Change from grid generation to reading in a file
   dealii::GridGenerator::hyper_cube (triangulation, -1, 1);
   triangulation.refine_global (4);
 
@@ -27,6 +29,7 @@ template <int dim>
 void ShortCrack<dim>::setup_system ()
 {
   dof_handler.distribute_dofs (fe);
+  dealii::DoFRenumbering::Cuthill_McKee (dof_handler);
 
   std::cout << "   Number of degrees of freedom: "
             << dof_handler.n_dofs()
