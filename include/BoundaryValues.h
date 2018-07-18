@@ -1,5 +1,5 @@
 #ifndef BOUNDARYVALUES_H
-#define NUM_H
+#define BOUNDARYVALUES_H
 #include "short-crack-model.h"
 
 //Class handeling essential boundary values of system

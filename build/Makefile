@@ -227,6 +227,33 @@ short-crack-model/fast:
 	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/build
 .PHONY : short-crack-model/fast
 
+src/BoundaryValues.o: src/BoundaryValues.cc.o
+
+.PHONY : src/BoundaryValues.o
+
+# target to build an object file
+src/BoundaryValues.cc.o:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/BoundaryValues.cc.o
+.PHONY : src/BoundaryValues.cc.o
+
+src/BoundaryValues.i: src/BoundaryValues.cc.i
+
+.PHONY : src/BoundaryValues.i
+
+# target to preprocess a source file
+src/BoundaryValues.cc.i:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/BoundaryValues.cc.i
+.PHONY : src/BoundaryValues.cc.i
+
+src/BoundaryValues.s: src/BoundaryValues.cc.s
+
+.PHONY : src/BoundaryValues.s
+
+# target to generate assembly for a file
+src/BoundaryValues.cc.s:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/BoundaryValues.cc.s
+.PHONY : src/BoundaryValues.cc.s
+
 src/RightHandSide.o: src/RightHandSide.cc.o
 
 .PHONY : src/RightHandSide.o
@@ -253,6 +280,33 @@ src/RightHandSide.s: src/RightHandSide.cc.s
 src/RightHandSide.cc.s:
 	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/RightHandSide.cc.s
 .PHONY : src/RightHandSide.cc.s
+
+src/ShortCrack.o: src/ShortCrack.cc.o
+
+.PHONY : src/ShortCrack.o
+
+# target to build an object file
+src/ShortCrack.cc.o:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/ShortCrack.cc.o
+.PHONY : src/ShortCrack.cc.o
+
+src/ShortCrack.i: src/ShortCrack.cc.i
+
+.PHONY : src/ShortCrack.i
+
+# target to preprocess a source file
+src/ShortCrack.cc.i:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/ShortCrack.cc.i
+.PHONY : src/ShortCrack.cc.i
+
+src/ShortCrack.s: src/ShortCrack.cc.s
+
+.PHONY : src/ShortCrack.s
+
+# target to generate assembly for a file
+src/ShortCrack.cc.s:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/ShortCrack.cc.s
+.PHONY : src/ShortCrack.cc.s
 
 src/short-crack-model.o: src/short-crack-model.cc.o
 
@@ -298,9 +352,15 @@ help:
 	@echo "... debug"
 	@echo "... rebuild_cache"
 	@echo "... short-crack-model"
+	@echo "... src/BoundaryValues.o"
+	@echo "... src/BoundaryValues.i"
+	@echo "... src/BoundaryValues.s"
 	@echo "... src/RightHandSide.o"
 	@echo "... src/RightHandSide.i"
 	@echo "... src/RightHandSide.s"
+	@echo "... src/ShortCrack.o"
+	@echo "... src/ShortCrack.i"
+	@echo "... src/ShortCrack.s"
 	@echo "... src/short-crack-model.o"
 	@echo "... src/short-crack-model.i"
 	@echo "... src/short-crack-model.s"

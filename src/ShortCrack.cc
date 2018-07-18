@@ -1,26 +1,6 @@
-/**
-*
-* short-crack-model.cc
-* Author: Malcolm D. Forbes
-* License: GNU 3.0
-*
-**/
-
-#include "short-crack-model.h"
 #include "ShortCrack.h"
-#include "RightHandSide.h"
-#include "BoundaryValues.h"
 #include "RightHandSide.cc"
-
-using namespace dealii;
-
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^HEADER^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
-template <int dim>
-double BoundaryValues<dim>::value (const Point<dim> &p,
-                                   const unsigned int /*component*/) const
-{
-  return p.square();
-}
+#include "BoundaryValues.cc"
 
 template <int dim>
 ShortCrack<dim>::ShortCrack ()
@@ -32,7 +12,7 @@ ShortCrack<dim>::ShortCrack ()
 template <int dim>
 void ShortCrack<dim>::make_grid ()
 {
-  GridGenerator::hyper_cube (triangulation, -1, 1);
+  dealii::GridGenerator::hyper_cube (triangulation, -1, 1);
   triangulation.refine_global (4);
 
   std::cout << "   Number of active cells: "
@@ -52,8 +32,8 @@ void ShortCrack<dim>::setup_system ()
             << dof_handler.n_dofs()
             << std::endl;
 
-  DynamicSparsityPattern dsp(dof_handler.n_dofs());
-  DoFTools::make_sparsity_pattern (dof_handler, dsp);
+  dealii::DynamicSparsityPattern dsp(dof_handler.n_dofs());
+  dealii::DoFTools::make_sparsity_pattern (dof_handler, dsp);
   sparsity_pattern.copy_from(dsp);
 
   system_matrix.reinit (sparsity_pattern);
@@ -65,21 +45,21 @@ void ShortCrack<dim>::setup_system ()
 template <int dim>
 void ShortCrack<dim>::assemble_system ()
 {
-  QGauss<dim>  quadrature_formula(2);
+  dealii::QGauss<dim>  quadrature_formula(2);
 
   const RightHandSide<dim> right_hand_side;
 
-  FEValues<dim> fe_values (fe, quadrature_formula,
-                           update_values   | update_gradients |
-                           update_quadrature_points | update_JxW_values);
+  dealii::FEValues<dim> fe_values (fe, quadrature_formula,
+                           dealii::update_values   | dealii::update_gradients |
+                           dealii::update_quadrature_points | dealii::update_JxW_values);
 
   const unsigned int   dofs_per_cell = fe.dofs_per_cell;
   const unsigned int   n_q_points    = quadrature_formula.size();
 
-  FullMatrix<double>   cell_matrix (dofs_per_cell, dofs_per_cell);
-  Vector<double>       cell_rhs (dofs_per_cell);
+  dealii::FullMatrix<double>   cell_matrix (dofs_per_cell, dofs_per_cell);
+  dealii::Vector<double>       cell_rhs (dofs_per_cell);
 
-  std::vector<types::global_dof_index> local_dof_indices (dofs_per_cell);
+  std::vector<dealii::types::global_dof_index> local_dof_indices (dofs_per_cell);
 
   for (const auto &cell: dof_handler.active_cell_iterators())
     {
@@ -112,12 +92,12 @@ void ShortCrack<dim>::assemble_system ()
         }
     }
 
-  std::map<types::global_dof_index,double> boundary_values;
-  VectorTools::interpolate_boundary_values (dof_handler,
+  std::map<dealii::types::global_dof_index,double> boundary_values;
+  dealii::VectorTools::interpolate_boundary_values (dof_handler,
                                             0,
                                             BoundaryValues<dim>(),
                                             boundary_values);
-  MatrixTools::apply_boundary_values (boundary_values,
+  dealii::MatrixTools::apply_boundary_values (boundary_values,
                                       system_matrix,
                                       solution,
                                       system_rhs);
@@ -126,10 +106,10 @@ void ShortCrack<dim>::assemble_system ()
 template <int dim>
 void ShortCrack<dim>::solve ()
 {
-  SolverControl           solver_control (1000, 1e-12);
-  SolverCG<>              solver (solver_control);
+  dealii::SolverControl           solver_control (1000, 1e-12);
+  dealii::SolverCG<>              solver (solver_control);
   solver.solve (system_matrix, solution, system_rhs,
-                PreconditionIdentity());
+                dealii::PreconditionIdentity());
 
   std::cout << "   " << solver_control.last_step()
             << " CG iterations needed to obtain convergence."
@@ -139,7 +119,7 @@ void ShortCrack<dim>::solve ()
 template <int dim>
 void ShortCrack<dim>::output_results () const
 {
-  DataOut<dim> data_out;
+  dealii::DataOut<dim> data_out;
 
   data_out.attach_dof_handler (dof_handler);
   data_out.add_data_vector (solution, "solution");
@@ -162,20 +142,4 @@ void ShortCrack<dim>::run ()
   assemble_system ();
   solve ();
   output_results ();
-}
-
-int main ()
-{
-  deallog.depth_console (0);
-  {
-    ShortCrack<2> laplace_problem_2d;
-    laplace_problem_2d.run ();
-  }
-
-  {
-    ShortCrack<3> laplace_problem_3d;
-    laplace_problem_3d.run ();
-  }
-
-  return 0;
 }
