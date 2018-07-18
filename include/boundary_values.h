@@ -1,6 +1,7 @@
 #ifndef BOUNDARYVALUES_H
 #define BOUNDARYVALUES_H
-#include "short-crack-model.h"
+
+#include <deal.II/base/function.h>
 
 //Class handeling essential boundary values of system
 template <int dim>

@@ -1,6 +1,6 @@
-#include "ShortCrack.h"
-#include "RightHandSide.cc"
-#include "BoundaryValues.cc"
+#include "short_crack.h"
+#include "right_hand_side.cc"
+#include "boundary_values.cc"
 
 template <int dim>
 ShortCrack<dim>::ShortCrack ()

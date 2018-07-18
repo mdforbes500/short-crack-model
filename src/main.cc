@@ -5,7 +5,9 @@
 * License: GNU 3.0
 *
 **/
-#include "ShortCrack.cc"
+#include <deal.II/base/logstream.h>
+
+#include "short_crack.cc"
 
 using namespace dealii;
 

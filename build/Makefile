@@ -227,86 +227,32 @@ short-crack-model/fast:
 	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/build
 .PHONY : short-crack-model/fast
 
-src/BoundaryValues.o: src/BoundaryValues.cc.o
+src/boundary_values.o: src/boundary_values.cc.o
 
-.PHONY : src/BoundaryValues.o
-
-# target to build an object file
-src/BoundaryValues.cc.o:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/BoundaryValues.cc.o
-.PHONY : src/BoundaryValues.cc.o
-
-src/BoundaryValues.i: src/BoundaryValues.cc.i
-
-.PHONY : src/BoundaryValues.i
-
-# target to preprocess a source file
-src/BoundaryValues.cc.i:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/BoundaryValues.cc.i
-.PHONY : src/BoundaryValues.cc.i
-
-src/BoundaryValues.s: src/BoundaryValues.cc.s
-
-.PHONY : src/BoundaryValues.s
-
-# target to generate assembly for a file
-src/BoundaryValues.cc.s:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/BoundaryValues.cc.s
-.PHONY : src/BoundaryValues.cc.s
-
-src/RightHandSide.o: src/RightHandSide.cc.o
-
-.PHONY : src/RightHandSide.o
+.PHONY : src/boundary_values.o
 
 # target to build an object file
-src/RightHandSide.cc.o:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/RightHandSide.cc.o
-.PHONY : src/RightHandSide.cc.o
+src/boundary_values.cc.o:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/boundary_values.cc.o
+.PHONY : src/boundary_values.cc.o
 
-src/RightHandSide.i: src/RightHandSide.cc.i
+src/boundary_values.i: src/boundary_values.cc.i
 
-.PHONY : src/RightHandSide.i
-
-# target to preprocess a source file
-src/RightHandSide.cc.i:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/RightHandSide.cc.i
-.PHONY : src/RightHandSide.cc.i
-
-src/RightHandSide.s: src/RightHandSide.cc.s
-
-.PHONY : src/RightHandSide.s
-
-# target to generate assembly for a file
-src/RightHandSide.cc.s:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/RightHandSide.cc.s
-.PHONY : src/RightHandSide.cc.s
-
-src/ShortCrack.o: src/ShortCrack.cc.o
-
-.PHONY : src/ShortCrack.o
-
-# target to build an object file
-src/ShortCrack.cc.o:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/ShortCrack.cc.o
-.PHONY : src/ShortCrack.cc.o
-
-src/ShortCrack.i: src/ShortCrack.cc.i
-
-.PHONY : src/ShortCrack.i
+.PHONY : src/boundary_values.i
 
 # target to preprocess a source file
-src/ShortCrack.cc.i:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/ShortCrack.cc.i
-.PHONY : src/ShortCrack.cc.i
+src/boundary_values.cc.i:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/boundary_values.cc.i
+.PHONY : src/boundary_values.cc.i
 
-src/ShortCrack.s: src/ShortCrack.cc.s
+src/boundary_values.s: src/boundary_values.cc.s
 
-.PHONY : src/ShortCrack.s
+.PHONY : src/boundary_values.s
 
 # target to generate assembly for a file
-src/ShortCrack.cc.s:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/ShortCrack.cc.s
-.PHONY : src/ShortCrack.cc.s
+src/boundary_values.cc.s:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/boundary_values.cc.s
+.PHONY : src/boundary_values.cc.s
 
 src/main.o: src/main.cc.o
 
@@ -335,6 +281,60 @@ src/main.cc.s:
 	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/main.cc.s
 .PHONY : src/main.cc.s
 
+src/right_hand_side.o: src/right_hand_side.cc.o
+
+.PHONY : src/right_hand_side.o
+
+# target to build an object file
+src/right_hand_side.cc.o:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/right_hand_side.cc.o
+.PHONY : src/right_hand_side.cc.o
+
+src/right_hand_side.i: src/right_hand_side.cc.i
+
+.PHONY : src/right_hand_side.i
+
+# target to preprocess a source file
+src/right_hand_side.cc.i:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/right_hand_side.cc.i
+.PHONY : src/right_hand_side.cc.i
+
+src/right_hand_side.s: src/right_hand_side.cc.s
+
+.PHONY : src/right_hand_side.s
+
+# target to generate assembly for a file
+src/right_hand_side.cc.s:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/right_hand_side.cc.s
+.PHONY : src/right_hand_side.cc.s
+
+src/short_crack.o: src/short_crack.cc.o
+
+.PHONY : src/short_crack.o
+
+# target to build an object file
+src/short_crack.cc.o:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/short_crack.cc.o
+.PHONY : src/short_crack.cc.o
+
+src/short_crack.i: src/short_crack.cc.i
+
+.PHONY : src/short_crack.i
+
+# target to preprocess a source file
+src/short_crack.cc.i:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/short_crack.cc.i
+.PHONY : src/short_crack.cc.i
+
+src/short_crack.s: src/short_crack.cc.s
+
+.PHONY : src/short_crack.s
+
+# target to generate assembly for a file
+src/short_crack.cc.s:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/short_crack.cc.s
+.PHONY : src/short_crack.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -352,18 +352,18 @@ help:
 	@echo "... debug"
 	@echo "... rebuild_cache"
 	@echo "... short-crack-model"
-	@echo "... src/BoundaryValues.o"
-	@echo "... src/BoundaryValues.i"
-	@echo "... src/BoundaryValues.s"
-	@echo "... src/RightHandSide.o"
-	@echo "... src/RightHandSide.i"
-	@echo "... src/RightHandSide.s"
-	@echo "... src/ShortCrack.o"
-	@echo "... src/ShortCrack.i"
-	@echo "... src/ShortCrack.s"
+	@echo "... src/boundary_values.o"
+	@echo "... src/boundary_values.i"
+	@echo "... src/boundary_values.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/right_hand_side.o"
+	@echo "... src/right_hand_side.i"
+	@echo "... src/right_hand_side.s"
+	@echo "... src/short_crack.o"
+	@echo "... src/short_crack.i"
+	@echo "... src/short_crack.s"
 .PHONY : help
 
 

@@ -1,4 +1,4 @@
-#include "BoundaryValues.h"
+#include "boundary_values.h"
 
 template <int dim>
 double BoundaryValues<dim>::value (const dealii::Point<dim> &p,

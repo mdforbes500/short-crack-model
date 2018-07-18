@@ -1,6 +1,7 @@
 #ifndef RIGHTHANDSIDE_H
 #define RIGHTHANDSIDE_H
-#include "short-crack-model.h"
+
+#include <deal.II/base/function.h>
 
 //Class handeling right hand side of equation
 template <int dim>

@@ -1,4 +1,4 @@
-#include "RightHandSide.h"
+#include "right_hand_side.h"
 
 template <int dim>
 double RightHandSide<dim>::value (const dealii::Point<dim> &p,

@@ -6,19 +6,15 @@
 
 #IncludeRegexTransform: 
 
-../include/BoundaryValues.h
-short-crack-model.h
-../include/short-crack-model.h
+../include/boundary_values.h
+deal.II/base/function.h
+-
 
-../include/RightHandSide.h
-short-crack-model.h
-../include/short-crack-model.h
+../include/right_hand_side.h
+deal.II/base/function.h
+-
 
-../include/ShortCrack.h
-short-crack-model.h
-../include/short-crack-model.h
-
-../include/short-crack-model.h
+../include/short_crack.h
 deal.II/dofs/dof_handler.h
 -
 deal.II/grid/grid_generator.h
@@ -36,8 +32,6 @@ deal.II/dofs/dof_tools.h
 deal.II/fe/fe_values.h
 -
 deal.II/base/quadrature_lib.h
--
-deal.II/base/function.h
 -
 deal.II/numerics/vector_tools.h
 -
@@ -61,28 +55,28 @@ fstream
 -
 iostream
 -
-deal.II/base/logstream.h
--
 
-/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/BoundaryValues.cc
-BoundaryValues.h
-/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/BoundaryValues.h
-
-/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/RightHandSide.cc
-RightHandSide.h
-/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/RightHandSide.h
-
-/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/ShortCrack.cc
-ShortCrack.h
-/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/ShortCrack.h
-RightHandSide.cc
-/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/RightHandSide.cc
-BoundaryValues.cc
-/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/BoundaryValues.cc
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/boundary_values.cc
+boundary_values.h
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/boundary_values.h
 
 /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/main.cc
-ShortCrack.cc
-/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/ShortCrack.cc
+deal.II/base/logstream.h
+-
+short_crack.cc
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/short_crack.cc
+
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/right_hand_side.cc
+right_hand_side.h
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/right_hand_side.h
+
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/short_crack.cc
+short_crack.h
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/short_crack.h
+right_hand_side.cc
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/right_hand_side.cc
+boundary_values.cc
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/boundary_values.cc
 
 /usr/local/include/deal.II/base/aligned_vector.h
 deal.II/base/config.h
