@@ -7,36 +7,11 @@
 **/
 
 #include "short-crack-model.h"
+#include "ShortCrack.h"
 
 using namespace dealii;
 
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^HEADER^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
-
-//ShortCrack Class
-template <int dim>
-class ShortCrack
-{
-public:
-  ShortCrack ();    //constructor
-  void run ();      //run script
-
-private:
-  void make_grid ();
-  void setup_system();
-  void assemble_system ();
-  void solve ();
-  void output_results () const;
-
-  Triangulation<dim>   triangulation;
-  FE_Q<dim>            fe;
-  DoFHandler<dim>      dof_handler;
-
-  SparsityPattern      sparsity_pattern;
-  SparseMatrix<double> system_matrix;
-
-  Vector<double>       solution;
-  Vector<double>       system_rhs;
-};
 
 //Class handeling right hand side of equation
 template <int dim>

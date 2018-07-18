@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+../include/ShortCrack.h
+short-crack-model.h
+../include/short-crack-model.h
+
 ../include/short-crack-model.h
 deal.II/dofs/dof_handler.h
 -
@@ -55,6 +59,8 @@ deal.II/base/logstream.h
 /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/short-crack-model.cc
 short-crack-model.h
 /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/short-crack-model.h
+ShortCrack.h
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/ShortCrack.h
 
 /usr/local/include/deal.II/base/aligned_vector.h
 deal.II/base/config.h
