@@ -12,7 +12,6 @@ ShortCrack<dim>::ShortCrack ()
 template <int dim>
 void ShortCrack<dim>::make_grid ()
 {
-
   //Change from grid generation to reading in a file
   dealii::GridGenerator::hyper_cube (triangulation, -1, 1);
   triangulation.refine_global (4);
@@ -23,6 +22,8 @@ void ShortCrack<dim>::make_grid ()
             << "   Total number of cells: "
             << triangulation.n_cells()
             << std::endl;
+
+  //Should output a .eps of the grid here. Provides good report writing material.
 }
 
 template <int dim>
@@ -43,6 +44,9 @@ void ShortCrack<dim>::setup_system ()
 
   solution.reinit (dof_handler.n_dofs());
   system_rhs.reinit (dof_handler.n_dofs());
+
+  //Should output an .svg of the sparsity pattern here. Provides good report
+  //writing material.
 }
 
 template <int dim>
