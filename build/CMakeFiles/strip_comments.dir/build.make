@@ -55,7 +55,7 @@ include CMakeFiles/strip_comments.dir/progress.make
 
 CMakeFiles/strip_comments:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "strip comments"
-	/usr/bin/perl -pi -e 's#^[ \t]*//.*\n##g;' src/short-crack-model.cc
+	/usr/bin/perl -pi -e 's#^[ \t]*//.*\n##g;' /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/RightHandSide.cc /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/short-crack-model.cc /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/include/BoundaryValues.h /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/include/RightHandSide.h /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/include/ShortCrack.h /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/include/short-crack-model.h
 
 strip_comments: CMakeFiles/strip_comments
 strip_comments: CMakeFiles/strip_comments.dir/build.make

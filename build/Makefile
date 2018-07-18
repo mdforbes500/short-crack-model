@@ -227,6 +227,33 @@ short-crack-model/fast:
 	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/build
 .PHONY : short-crack-model/fast
 
+src/RightHandSide.o: src/RightHandSide.cc.o
+
+.PHONY : src/RightHandSide.o
+
+# target to build an object file
+src/RightHandSide.cc.o:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/RightHandSide.cc.o
+.PHONY : src/RightHandSide.cc.o
+
+src/RightHandSide.i: src/RightHandSide.cc.i
+
+.PHONY : src/RightHandSide.i
+
+# target to preprocess a source file
+src/RightHandSide.cc.i:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/RightHandSide.cc.i
+.PHONY : src/RightHandSide.cc.i
+
+src/RightHandSide.s: src/RightHandSide.cc.s
+
+.PHONY : src/RightHandSide.s
+
+# target to generate assembly for a file
+src/RightHandSide.cc.s:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/RightHandSide.cc.s
+.PHONY : src/RightHandSide.cc.s
+
 src/short-crack-model.o: src/short-crack-model.cc.o
 
 .PHONY : src/short-crack-model.o
@@ -271,6 +298,9 @@ help:
 	@echo "... debug"
 	@echo "... rebuild_cache"
 	@echo "... short-crack-model"
+	@echo "... src/RightHandSide.o"
+	@echo "... src/RightHandSide.i"
+	@echo "... src/RightHandSide.s"
 	@echo "... src/short-crack-model.o"
 	@echo "... src/short-crack-model.i"
 	@echo "... src/short-crack-model.s"

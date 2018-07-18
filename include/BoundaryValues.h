@@ -1,3 +1,5 @@
+#ifndef BOUNDARYVALUES_H
+#define NUM_H
 #include "short-crack-model.h"
 
 //Class handeling essential boundary values of system
@@ -10,3 +12,4 @@ public:
   virtual double value (const dealii::Point<dim>   &p,
                         const unsigned int  component = 0) const;
 };
+#endif

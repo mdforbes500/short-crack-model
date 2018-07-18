@@ -1,3 +1,5 @@
+#ifndef SHORTCRACK_H
+#define SHORTCRACK_H
 #include "short-crack-model.h"
 
 //ShortCrack Class
@@ -25,3 +27,4 @@ private:
   dealii::Vector<double>       solution;
   dealii::Vector<double>       system_rhs;
 };
+#endif

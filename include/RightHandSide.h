@@ -1,3 +1,5 @@
+#ifndef RIGHTHANDSIDE_H
+#define RIGHTHANDSIDE_H
 #include "short-crack-model.h"
 
 //Class handeling right hand side of equation
@@ -10,3 +12,4 @@ public:
   virtual double value (const dealii::Point<dim>   &p,
                         const unsigned int  component = 0) const;
 };
+#endif
