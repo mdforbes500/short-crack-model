@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+../include/BoundaryValues.h
+short-crack-model.h
+../include/short-crack-model.h
+
+../include/RightHandSide.h
+short-crack-model.h
+../include/short-crack-model.h
+
 ../include/ShortCrack.h
 short-crack-model.h
 ../include/short-crack-model.h
@@ -61,6 +69,10 @@ short-crack-model.h
 /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/short-crack-model.h
 ShortCrack.h
 /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/ShortCrack.h
+RightHandSide.h
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/RightHandSide.h
+BoundaryValues.h
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/BoundaryValues.h
 
 /usr/local/include/deal.II/base/aligned_vector.h
 deal.II/base/config.h

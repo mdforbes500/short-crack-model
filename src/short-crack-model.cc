@@ -8,32 +8,12 @@
 
 #include "short-crack-model.h"
 #include "ShortCrack.h"
+#include "RightHandSide.h"
+#include "BoundaryValues.h"
 
 using namespace dealii;
 
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^HEADER^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
-
-//Class handeling right hand side of equation
-template <int dim>
-class RightHandSide : public Function<dim>
-{
-public:
-  RightHandSide () : Function<dim>() {}   //constructor
-
-  virtual double value (const Point<dim>   &p,
-                        const unsigned int  component = 0) const;
-};
-
-//Class handeling essential boundary values of system
-template <int dim>
-class BoundaryValues : public Function<dim>
-{
-public:
-  BoundaryValues () : Function<dim>() {}    //constructor
-
-  virtual double value (const Point<dim>   &p,
-                        const unsigned int  component = 0) const;
-};
 
 template <int dim>
 double RightHandSide<dim>::value (const Point<dim> &p,
@@ -45,7 +25,6 @@ double RightHandSide<dim>::value (const Point<dim> &p,
 
   return return_value;
 }
-
 
 
 template <int dim>
