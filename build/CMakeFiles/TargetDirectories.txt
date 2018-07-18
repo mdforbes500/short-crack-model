@@ -1,0 +1,11 @@
+/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/edit_cache.dir
+/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/info.dir
+/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/strip_comments.dir
+/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/distclean.dir
+/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/runclean.dir
+/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/run.dir
+/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/release.dir
+/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/sign.dir
+/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/debug.dir
+/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/rebuild_cache.dir
+/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/short-crack-model.dir
