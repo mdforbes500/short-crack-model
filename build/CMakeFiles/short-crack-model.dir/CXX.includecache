@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/short-crack-model.cc
+../include/short-crack-model.h
 deal.II/dofs/dof_handler.h
 -
 deal.II/grid/grid_generator.h
@@ -51,6 +51,10 @@ iostream
 -
 deal.II/base/logstream.h
 -
+
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/short-crack-model.cc
+short-crack-model.h
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/short-crack-model.h
 
 /usr/local/include/deal.II/base/aligned_vector.h
 deal.II/base/config.h

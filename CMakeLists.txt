@@ -5,6 +5,12 @@
 # Set the name of the project and target:
 SET(TARGET "short-crack-model")
 
+# Include headers
+INCLUDE_DIRECTORIES(include)
+
+# Set sources
+#SET(SOURCES src/${TARGET}.cc)
+
 # Declare all source files the target consists of. Here, this is only
 # the one step-X.cc file, but as you expand your project you may wish
 # to add other source files as well. If your project becomes much larger,
@@ -15,6 +21,7 @@ SET(TARGET "short-crack-model")
 # or switch altogether to the large project CMakeLists.txt file discussed
 # in the "CMake in user projects" page accessible from the "User info"
 # page of the documentation.
+
 SET(TARGET_SRC
   src/${TARGET}.cc
   )

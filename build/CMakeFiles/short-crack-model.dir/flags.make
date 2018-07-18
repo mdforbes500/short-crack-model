@@ -6,5 +6,5 @@ CXX_FLAGS =   -pedantic -fPIC -Wall -Wextra -Wpointer-arith -Wwrite-strings -Wsy
 
 CXX_DEFINES = -DDEBUG -DTBB_DO_ASSERT=1 -DTBB_USE_DEBUG
 
-CXX_INCLUDES = -isystem /usr/local/include -isystem /usr/local/include/deal.II/bundled 
+CXX_INCLUDES = -I/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/include -isystem /usr/local/include -isystem /usr/local/include/deal.II/bundled 
 
