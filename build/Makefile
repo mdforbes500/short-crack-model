@@ -48,10 +48,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4
+CMAKE_SOURCE_DIR = /Users/duncanforbes/Documents/dealii-workspace/short-crack-model
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4/build
+CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles /Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/CMakeFiles /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -227,32 +227,32 @@ short-crack-model/fast:
 	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/build
 .PHONY : short-crack-model/fast
 
-short-crack-model.o: short-crack-model.cc.o
+src/short-crack-model.o: src/short-crack-model.cc.o
 
-.PHONY : short-crack-model.o
+.PHONY : src/short-crack-model.o
 
 # target to build an object file
-short-crack-model.cc.o:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/short-crack-model.cc.o
-.PHONY : short-crack-model.cc.o
+src/short-crack-model.cc.o:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/short-crack-model.cc.o
+.PHONY : src/short-crack-model.cc.o
 
-short-crack-model.i: short-crack-model.cc.i
+src/short-crack-model.i: src/short-crack-model.cc.i
 
-.PHONY : short-crack-model.i
+.PHONY : src/short-crack-model.i
 
 # target to preprocess a source file
-short-crack-model.cc.i:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/short-crack-model.cc.i
-.PHONY : short-crack-model.cc.i
+src/short-crack-model.cc.i:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/short-crack-model.cc.i
+.PHONY : src/short-crack-model.cc.i
 
-short-crack-model.s: short-crack-model.cc.s
+src/short-crack-model.s: src/short-crack-model.cc.s
 
-.PHONY : short-crack-model.s
+.PHONY : src/short-crack-model.s
 
 # target to generate assembly for a file
-short-crack-model.cc.s:
-	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/short-crack-model.cc.s
-.PHONY : short-crack-model.cc.s
+src/short-crack-model.cc.s:
+	$(MAKE) -f CMakeFiles/short-crack-model.dir/build.make CMakeFiles/short-crack-model.dir/src/short-crack-model.cc.s
+.PHONY : src/short-crack-model.cc.s
 
 # Help Target
 help:
@@ -271,9 +271,9 @@ help:
 	@echo "... debug"
 	@echo "... rebuild_cache"
 	@echo "... short-crack-model"
-	@echo "... short-crack-model.o"
-	@echo "... short-crack-model.i"
-	@echo "... short-crack-model.s"
+	@echo "... src/short-crack-model.o"
+	@echo "... src/short-crack-model.i"
+	@echo "... src/short-crack-model.s"
 .PHONY : help
 
 

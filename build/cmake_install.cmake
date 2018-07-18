@@ -1,4 +1,4 @@
-# Install script for directory: /Users/duncanforbes/Documents/dealii-workspace/step-4
+# Install script for directory: /Users/duncanforbes/Documents/dealii-workspace/short-crack-model
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/duncanforbes/Documents/dealii-workspace/step-4/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

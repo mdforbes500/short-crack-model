@@ -43,10 +43,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4
+CMAKE_SOURCE_DIR = /Users/duncanforbes/Documents/dealii-workspace/short-crack-model
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4/build
+CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build
 
 # Utility rule file for run.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4/build
 include CMakeFiles/run.dir/progress.make
 
 CMakeFiles/run: short-crack-model
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Run short-crack-model with Debug configuration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Run short-crack-model with Debug configuration"
 	./short-crack-model
 
 run: CMakeFiles/run
@@ -72,6 +72,6 @@ CMakeFiles/run.dir/clean:
 .PHONY : CMakeFiles/run.dir/clean
 
 CMakeFiles/run.dir/depend:
-	cd /Users/duncanforbes/Documents/dealii-workspace/step-4/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/duncanforbes/Documents/dealii-workspace/step-4 /Users/duncanforbes/Documents/dealii-workspace/step-4 /Users/duncanforbes/Documents/dealii-workspace/step-4/build /Users/duncanforbes/Documents/dealii-workspace/step-4/build /Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/run.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/duncanforbes/Documents/dealii-workspace/short-crack-model /Users/duncanforbes/Documents/dealii-workspace/short-crack-model /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/CMakeFiles/run.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/run.dir/depend
 

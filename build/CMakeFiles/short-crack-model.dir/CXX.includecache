@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/duncanforbes/Documents/dealii-workspace/step-4/short-crack-model.cc
+/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/src/short-crack-model.cc
 deal.II/dofs/dof_handler.h
 -
 deal.II/grid/grid_generator.h

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/short-crack-model.dir/short-crack-model.cc.o"
+  "CMakeFiles/short-crack-model.dir/src/short-crack-model.cc.o"
   "short-crack-model.pdb"
   "short-crack-model"
 )

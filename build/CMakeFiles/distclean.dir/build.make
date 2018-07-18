@@ -43,10 +43,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4
+CMAKE_SOURCE_DIR = /Users/duncanforbes/Documents/dealii-workspace/short-crack-model
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4/build
+CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build
 
 # Utility rule file for distclean.
 
@@ -54,9 +54,9 @@ CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4/build
 include CMakeFiles/distclean.dir/progress.make
 
 CMakeFiles/distclean:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "distclean invoked"
-	/Applications/CMake.app/Contents/bin/cmake --build /Users/duncanforbes/Documents/dealii-workspace/step-4/build --target clean
-	/Applications/CMake.app/Contents/bin/cmake --build /Users/duncanforbes/Documents/dealii-workspace/step-4/build --target runclean
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "distclean invoked"
+	/Applications/CMake.app/Contents/bin/cmake --build /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build --target clean
+	/Applications/CMake.app/Contents/bin/cmake --build /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build --target runclean
 	/Applications/CMake.app/Contents/bin/cmake -E remove_directory CMakeFiles
 	/Applications/CMake.app/Contents/bin/cmake -E remove CMakeCache.txt cmake_install.cmake Makefile build.ninja rules.ninja .ninja_deps .ninja_log
 
@@ -75,6 +75,6 @@ CMakeFiles/distclean.dir/clean:
 .PHONY : CMakeFiles/distclean.dir/clean
 
 CMakeFiles/distclean.dir/depend:
-	cd /Users/duncanforbes/Documents/dealii-workspace/step-4/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/duncanforbes/Documents/dealii-workspace/step-4 /Users/duncanforbes/Documents/dealii-workspace/step-4 /Users/duncanforbes/Documents/dealii-workspace/step-4/build /Users/duncanforbes/Documents/dealii-workspace/step-4/build /Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/distclean.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/duncanforbes/Documents/dealii-workspace/short-crack-model /Users/duncanforbes/Documents/dealii-workspace/short-crack-model /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/CMakeFiles/distclean.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/distclean.dir/depend
 

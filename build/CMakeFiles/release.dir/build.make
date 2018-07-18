@@ -43,10 +43,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4
+CMAKE_SOURCE_DIR = /Users/duncanforbes/Documents/dealii-workspace/short-crack-model
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4/build
+CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build
 
 # Utility rule file for release.
 
@@ -54,9 +54,9 @@ CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4/build
 include CMakeFiles/release.dir/progress.make
 
 CMakeFiles/release:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Switch CMAKE_BUILD_TYPE to Release"
-	/Applications/CMake.app/Contents/bin/cmake -DCMAKE_BUILD_TYPE=Release /Users/duncanforbes/Documents/dealii-workspace/step-4
-	/Applications/CMake.app/Contents/bin/cmake --build /Users/duncanforbes/Documents/dealii-workspace/step-4/build --target all
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Switch CMAKE_BUILD_TYPE to Release"
+	/Applications/CMake.app/Contents/bin/cmake -DCMAKE_BUILD_TYPE=Release /Users/duncanforbes/Documents/dealii-workspace/short-crack-model
+	/Applications/CMake.app/Contents/bin/cmake --build /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build --target all
 
 release: CMakeFiles/release
 release: CMakeFiles/release.dir/build.make
@@ -73,6 +73,6 @@ CMakeFiles/release.dir/clean:
 .PHONY : CMakeFiles/release.dir/clean
 
 CMakeFiles/release.dir/depend:
-	cd /Users/duncanforbes/Documents/dealii-workspace/step-4/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/duncanforbes/Documents/dealii-workspace/step-4 /Users/duncanforbes/Documents/dealii-workspace/step-4 /Users/duncanforbes/Documents/dealii-workspace/step-4/build /Users/duncanforbes/Documents/dealii-workspace/step-4/build /Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/release.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/duncanforbes/Documents/dealii-workspace/short-crack-model /Users/duncanforbes/Documents/dealii-workspace/short-crack-model /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/CMakeFiles/release.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/release.dir/depend
 

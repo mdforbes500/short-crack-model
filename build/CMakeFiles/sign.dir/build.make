@@ -43,10 +43,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4
+CMAKE_SOURCE_DIR = /Users/duncanforbes/Documents/dealii-workspace/short-crack-model
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4/build
+CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build
 
 # Utility rule file for sign.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /Users/duncanforbes/Documents/dealii-workspace/step-4/build
 include CMakeFiles/sign.dir/progress.make
 
 CMakeFiles/sign:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Digitally signing short-crack-model"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Digitally signing short-crack-model"
 	/Applications/CMake.app/Contents/bin/cmake -E echo '' && /Applications/CMake.app/Contents/bin/cmake -E echo '***************************************************************************' && /Applications/CMake.app/Contents/bin/cmake -E echo '** Error: No Mac OSX developer certificate specified **' && /Applications/CMake.app/Contents/bin/cmake -E echo '** Please reconfigure with -DOSX_CERTIFICATE_NAME="<...>" **' && /Applications/CMake.app/Contents/bin/cmake -E echo '***************************************************************************' && /Applications/CMake.app/Contents/bin/cmake -E echo ''
 
 sign: CMakeFiles/sign
@@ -72,6 +72,6 @@ CMakeFiles/sign.dir/clean:
 .PHONY : CMakeFiles/sign.dir/clean
 
 CMakeFiles/sign.dir/depend:
-	cd /Users/duncanforbes/Documents/dealii-workspace/step-4/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/duncanforbes/Documents/dealii-workspace/step-4 /Users/duncanforbes/Documents/dealii-workspace/step-4 /Users/duncanforbes/Documents/dealii-workspace/step-4/build /Users/duncanforbes/Documents/dealii-workspace/step-4/build /Users/duncanforbes/Documents/dealii-workspace/step-4/build/CMakeFiles/sign.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/duncanforbes/Documents/dealii-workspace/short-crack-model /Users/duncanforbes/Documents/dealii-workspace/short-crack-model /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build /Users/duncanforbes/Documents/dealii-workspace/short-crack-model/build/CMakeFiles/sign.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/sign.dir/depend
 
