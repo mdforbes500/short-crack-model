@@ -139,9 +139,9 @@ void ShortCrack<dim>::output_results () const
   data_out.build_patches ();
 
   std::ofstream output (dim == 2 ?
-                        "../resources/output/solution-2d.vtk" :
-                        "../resources/output/solution-3d.vtk");
-  data_out.write_vtk (output);
+                        "../resources/output/solution-2d.eps" :
+                        "../resources/output/solution-3d.eps");
+  data_out.write_eps (output);
 }
 
 template <int dim>
