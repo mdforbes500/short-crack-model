@@ -12,9 +12,11 @@ ShortCrack<dim>::ShortCrack ()
 template <int dim>
 void ShortCrack<dim>::make_grid ()
 {
-  //Change from grid generation to reading in a file
-  dealii::GridGenerator::hyper_cube (triangulation, -1, 1);
-  triangulation.refine_global (4);
+  //Reads GMSH type file in and processes it.
+  dealii::GridIn<dim> gridin;
+  gridin.attach_triangulation(triangulation);
+  std::ifstream f("../resources/input/mesh.msh");
+  gridin.read_msh(f);
 
   std::cout << "   Number of active cells: "
             << triangulation.n_active_cells()
