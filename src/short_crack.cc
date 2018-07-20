@@ -23,7 +23,11 @@ void ShortCrack<dim>::make_grid ()
             << triangulation.n_cells()
             << std::endl;
 
-  //Should output a .eps of the grid here. Provides good report writing material.
+  //Ouptut mesh file as an EPS file
+  std::ofstream out ("../resources/output/grid.eps");
+  dealii::GridOut grid_out;
+  grid_out.write_eps(triangulation, out);
+  std::cout << "Grid written to 'resources/output/grid.eps'" << std::endl;
 }
 
 template <int dim>
@@ -134,8 +138,8 @@ void ShortCrack<dim>::output_results () const
   data_out.build_patches ();
 
   std::ofstream output (dim == 2 ?
-                        "solution-2d.vtk" :
-                        "solution-3d.vtk");
+                        "../resources/output/solution-2d.vtk" :
+                        "../resources/output/solution-3d.vtk");
   data_out.write_vtk (output);
 }
 
