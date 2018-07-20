@@ -49,8 +49,9 @@ void ShortCrack<dim>::setup_system ()
   solution.reinit (dof_handler.n_dofs());
   system_rhs.reinit (dof_handler.n_dofs());
 
-  //Should output an .svg of the sparsity pattern here. Provides good report
-  //writing material.
+  //Output sparsity pattern image for review
+  std::ofstream out("../resources/output/sparsity_pattern.svg");
+  sparsity_pattern.print_svg(out);
 }
 
 template <int dim>
