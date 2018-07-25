@@ -60,6 +60,7 @@ void ShortCrack<dim>::setup_system ()
 template <int dim>
 void ShortCrack<dim>::assemble_system ()
 {
+<<<<<<< HEAD
   dealii::QGauss<dim>  quadrature_formula(3);
   dealii::QGauss<dim-1> face_quadrature_formula(3);
 
@@ -67,12 +68,22 @@ void ShortCrack<dim>::assemble_system ()
   //const unsigned int   n_face_q_points    = face_quadrature_formula.size();
 
   const unsigned int   dofs_per_cell = fe.dofs_per_cell;
+=======
+  dealii::QGauss<dim>  quadrature_formula(2);
+  dealii::QGauss<dim-1> face_quadrature_formula(2);
+
+  const unsigned int   n_q_points    = quadrature_formula.size();
+  const unsigned int   n_face_q_points    = face_quadrature_formula.size();
+
+  const unsigned int   dofs_per_cell = fe->dofs_per_cell;
+>>>>>>> 951bcd65eaf900631141d8023059be42c3f5e23c
 
   dealii::FullMatrix<double>   cell_matrix (dofs_per_cell, dofs_per_cell);
   dealii::Vector<double>       cell_rhs (dofs_per_cell);
 
   std::vector<dealii::types::global_dof_index> local_dof_indices (dofs_per_cell);
 
+<<<<<<< HEAD
   dealii::FEValues<dim> fe_values (fe, quadrature_formula,
                            dealii::update_values   | dealii::update_gradients |
                            dealii::update_quadrature_points | dealii::update_JxW_values);
@@ -80,6 +91,15 @@ void ShortCrack<dim>::assemble_system ()
 //  dealii::FEFaceValues<dim> fe_face_values (fe, face_quadrature_formula,
 //                           dealii::update_values   | dealii::update_gradients |
 //                           dealii::update_quadrature_points | dealii::update_JxW_values);
+=======
+  dealii::FEValues<dim> fe_values (*fe, quadrature_formula,
+                           dealii::update_values   | dealii::update_gradients |
+                           dealii::update_quadrature_points | dealii::update_JxW_values);
+
+  dealii::FEValues<dim> fe_face_values (*fe, face_quadrature_formula,
+                           dealii::update_values   | dealii::update_gradients |
+                           dealii::update_quadrature_points | dealii::update_JxW_values);
+>>>>>>> 951bcd65eaf900631141d8023059be42c3f5e23c
 
   const RightHandSide<dim> right_hand_side;
   std::vector<double> rhs_values(n_q_points);
@@ -87,7 +107,11 @@ void ShortCrack<dim>::assemble_system ()
   typename dealii::DoFHandler<dim>::active_cell_iterator
   cell = dof_handler.begin_active(),
   endc = dof_handler.end();
+<<<<<<< HEAD
   for (; cell != endc; ++cell)
+=======
+  for (; ce;; != endc; ++cell)
+>>>>>>> 951bcd65eaf900631141d8023059be42c3f5e23c
     {
       cell_matrix = 0;
       cell_rhs = 0;
@@ -97,7 +121,11 @@ void ShortCrack<dim>::assemble_system ()
       right_hand_side.value_list (fe_values.get_quadrature_points(),
                                   rhs_values);
 
+<<<<<<< HEAD
 //      const BoundaryValues<dim> edges;
+=======
+      const BoundaryValues<dim> edges;
+>>>>>>> 951bcd65eaf900631141d8023059be42c3f5e23c
 
       for (unsigned int q_point=0; q_point<n_q_points; ++q_point)
         for (unsigned int i=0; i<dofs_per_cell; ++i)
@@ -114,7 +142,11 @@ void ShortCrack<dim>::assemble_system ()
                               fe_values.JxW (q_point)
                             );
           }
+<<<<<<< HEAD
 /*        //Apply and handle Neumann boundary conditions
+=======
+        //Apply and handle Neumann boundary conditions
+>>>>>>> 951bcd65eaf900631141d8023059be42c3f5e23c
         for (unsigned int face_number=0; face_number<dealii::GeometryInfo<dim>::faces_per_cell; ++face_number)
           if (cell->face(face_number)->at_boundary()
               &&
@@ -136,7 +168,11 @@ void ShortCrack<dim>::assemble_system ()
                   }
                 }
               }
+<<<<<<< HEAD
 */
+=======
+
+>>>>>>> 951bcd65eaf900631141d8023059be42c3f5e23c
       cell->get_dof_indices (local_dof_indices);
       for (unsigned int i=0; i<dofs_per_cell; ++i)
         {
@@ -167,7 +203,11 @@ void ShortCrack<dim>::solve ()
   dealii::SolverControl           solver_control (1000, 1e-12);
   dealii::SolverCG<>              solver (solver_control);
 
+<<<<<<< HEAD
   dealii::PreconditionSSOR<> preconditioner;
+=======
+  dealii::PreconditionerSSOR<> preconditioner;
+>>>>>>> 951bcd65eaf900631141d8023059be42c3f5e23c
   preconditioner.initialize(system_matrix, 1.2);
 
   solver.solve (system_matrix, solution, system_rhs, preconditioner);
