@@ -1,28 +1,36 @@
-// Gmsh project created on Fri Jul 20 12:07:04 2018
+// Gmsh project created on Wed Jul 25 15:40:41 2018
 SetFactory("OpenCASCADE");
 //+
-Point(1) = {0, 0, 0, 1.0};
+Point(1) = {-1, -1, 0, 1.0};
 //+
-Point(2) = {0, 10, 0, 1.0};
+Point(2) = {1, -1, 0, 1.0};
 //+
-Point(3) = {10, 10, 0, 1.0};
+Point(3) = {1, 1, 0, 1.0};
 //+
-Point(4) = {10, 0, 0, 1.0};
+Point(4) = {-1, 1, 0, 1.0};
 //+
-Line(1) = {1, 2};
+Line(1) = {4, 1};
 //+
-Line(2) = {2, 3};
+Line(2) = {1, 2};
 //+
-Line(3) = {3, 4};
+Line(3) = {2, 3};
 //+
-Line(4) = {4, 1};
-//+
-Circle(5) = {5, 5, 0, 2.5, 0, 2*Pi};
+Line(4) = {3, 4};
 //+
 Line Loop(1) = {1, 2, 3, 4};
 //+
-Line Loop(2) = {5};
+Plane Surface(1) = {1};
 //+
-Plane Surface(1) = {1, 2};
+Physical Line("left") -= {1};
+//+
+Physical Line("right") -= {3};
+//+
+Physical Line("upper") -= {4};
+//+
+Physical Line("bottom") -= {2};
+//+
+Transfinite Surface {1} = {4, 3, 2, 1};
+//+
+Transfinite Line {1, 3, 4, 2} = 33 Using Progression 1;
 //+
 Recombine Surface {1};
