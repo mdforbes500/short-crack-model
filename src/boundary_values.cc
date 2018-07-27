@@ -4,7 +4,8 @@ template <int dim>
 double BoundaryValues<dim>::value (const dealii::Point<dim> &p,
                                    const unsigned int /*component*/) const
 {
-  return p.square();
+  displacement_value = 5.0;
+  return displacement_value;
 }
 
 //template <int dim>
