@@ -9,7 +9,7 @@ template <int dim>
 class BoundaryValues : public dealii::Function<dim>
 {
 protected:
-  static double displacement_value;
+  //static double displacement_value;
   //static const dealii::Tensor<1,dim> grad;
 public:
   BoundaryValues () : dealii::Function<dim>() {}    //constructor

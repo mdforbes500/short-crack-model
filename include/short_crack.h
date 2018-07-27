@@ -25,6 +25,10 @@
 
 #include <deal.II/numerics/data_out.h>
 
+#include <deal.II/lac/constraint_matrix.h>
+#include <deal.II/grid/grid_refinement.h>
+#include <deal.II/numerics/error_estimator.h>
+
 #include <fstream>
 #include <iostream>
 
@@ -34,18 +38,22 @@ class ShortCrack
 {
 public:
   ShortCrack ();    //constructor
+  ~ShortCrack();    //destructor
   void run ();      //run script
 
 private:
   void make_grid ();
   void setup_system();
   void assemble_system ();
+  void refine_grid();
   void solve ();
-  void output_results () const;
+  void output_results (const unsigned int cycle) const;
 
   dealii::Triangulation<dim>   triangulation;
   dealii::FE_Q<dim>            fe;
   dealii::DoFHandler<dim>      dof_handler;
+
+  dealii::ConstraintMatrix     constraints;
 
   dealii::SparsityPattern      sparsity_pattern;
   dealii::SparseMatrix<double> system_matrix;

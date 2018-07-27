@@ -10,6 +10,12 @@ ShortCrack<dim>::ShortCrack ()
 {}
 
 template <int dim>
+ShortCrack<dim>::~ShortCrack()
+{
+  dof_handler.clear();
+}
+
+template <int dim>
 void ShortCrack<dim>::make_grid ()
 {
   //Reads GMSH type file in and processes it.
@@ -18,13 +24,6 @@ void ShortCrack<dim>::make_grid ()
   gridin.attach_triangulation(triangulation);
   std::ifstream f("../resources/input/mesh.msh");
   gridin.read_msh(f);
-
-  std::cout << "   Number of active cells: "
-            << triangulation.n_active_cells()
-            << std::endl
-            << "   Total number of cells: "
-            << triangulation.n_cells()
-            << std::endl;
 
   //Ouptut mesh file as an EPS file
   std::ofstream out ("../resources/output/grid.eps");
@@ -39,18 +38,24 @@ void ShortCrack<dim>::setup_system ()
   dof_handler.distribute_dofs (fe);
   dealii::DoFRenumbering::Cuthill_McKee (dof_handler);
 
-  std::cout << "   Number of degrees of freedom: "
-            << dof_handler.n_dofs()
-            << std::endl;
+  solution.reinit (dof_handler.n_dofs());
+  system_rhs.reinit (dof_handler.n_dofs());
+
+  constraints.clear();
+  dealii::DoFTools::make_hanging_node_constraints(dof_handler,
+                                                  constraints);
+
+  dealii::VectorTools::interpolate_boundary_values(dof_handler,
+                                                   0,
+                                                   dealii::Functions::ZeroFunction<dim>(),
+                                                   constraints);
+  constraints.close();
 
   dealii::DynamicSparsityPattern dsp(dof_handler.n_dofs());
   dealii::DoFTools::make_sparsity_pattern (dof_handler, dsp);
   sparsity_pattern.copy_from(dsp);
 
   system_matrix.reinit (sparsity_pattern);
-
-  solution.reinit (dof_handler.n_dofs());
-  system_rhs.reinit (dof_handler.n_dofs());
 
   //Output sparsity pattern image for review
   std::ofstream out("../resources/output/sparsity_pattern.svg");
@@ -138,6 +143,7 @@ void ShortCrack<dim>::assemble_system ()
               }
 */
       cell->get_dof_indices (local_dof_indices);
+
       for (unsigned int i=0; i<dofs_per_cell; ++i)
         {
           for (unsigned int j=0; j<dofs_per_cell; ++j)
@@ -146,6 +152,9 @@ void ShortCrack<dim>::assemble_system ()
                                cell_matrix(i,j));
 
           system_rhs(local_dof_indices[i]) += cell_rhs(i);
+          constraints.distribute_local_to_global(cell_matrix, cell_rhs,
+                                                 local_dof_indices, system_matrix,
+                                                 system_rhs);
         }
     }
 
@@ -172,13 +181,26 @@ void ShortCrack<dim>::solve ()
 
   solver.solve (system_matrix, solution, system_rhs, preconditioner);
 
-  std::cout << "   " << solver_control.last_step()
-            << " CG iterations needed to obtain convergence."
-            << std::endl;
+  constraints.distribute(solution);
 }
 
 template <int dim>
-void ShortCrack<dim>::output_results () const
+void ShortCrack<dim>::refine_grid()
+{
+  dealii::Vector<float> estimated_error_per_cell(triangulation.n_active_cells());
+
+  dealii::KellyErrorEstimator<dim>::estimate(dof_handler, dealii::QGauss<dim-1>(3),
+                                             typename dealii::FunctionMap<dim>::type(),
+                                             solution, estimated_error_per_cell);
+
+  dealii::GridRefinement::refine_and_coarsen_fixed_number(triangulation,
+                                                          estimated_error_per_cell,
+                                                          0.3, 0.03);
+  triangulation.execute_coarsening_and_refinement();
+}
+
+template <int dim>
+void ShortCrack<dim>::output_results (const unsigned int cycle) const
 {
   dealii::DataOut<dim> data_out;
 
@@ -198,9 +220,37 @@ void ShortCrack<dim>::run ()
 {
   std::cout << "Solving problem in " << dim << " space dimensions." << std::endl;
 
-  make_grid();
-  setup_system ();
-  assemble_system ();
-  solve ();
-  output_results ();
+  for(unsigned int cycle = 0; cycle < 8; ++cycle)
+  {
+    if (cycle == 0)
+    {
+      make_grid();
+    }
+    else
+    {
+      refine_grid();
+
+      std::cout << "   Number of active cells: "
+                << triangulation.n_active_cells()
+                << std::endl
+                << "   Total number of cells: "
+                << triangulation.n_cells()
+                << std::endl;
+
+      setup_system ();
+
+      std::cout << "   Number of degrees of freedom: "
+                << dof_handler.n_dofs()
+                << std::endl;
+
+      assemble_system ();
+      solve ();
+
+      std::cout << "   " << solver_control.last_step()
+                << " CG iterations needed to obtain convergence."
+                << std::endl;
+
+      output_results (cycle);
+    }
+  }
 }

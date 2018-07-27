@@ -18,6 +18,6 @@ int main ()
     ShortCrack<2> laplace_problem_2d;
     laplace_problem_2d.run ();
   }
-  
+
   return 0;
 }
