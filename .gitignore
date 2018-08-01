@@ -30,6 +30,7 @@
 *.exe
 *.out
 *.app
+short-crack-model
 
 # CMake
 CMakeCache.txt
@@ -46,3 +47,6 @@ CTestTestfile.cmake
 *.eps
 *.svg
 *.geo
+
+# MacOSX Filesystem
+.DS_Store
