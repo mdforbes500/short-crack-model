@@ -53,7 +53,7 @@ void ShortCrack<dim>::setup_system ()
   std::ofstream out("../resources/output/sparsity_pattern.svg");
   sparsity_pattern.print_svg(out);
 
-  std::cout << "Setting up system..." << std::endl;
+  std::cout << "Setting up system..." << std::endl
             << "   Number of degrees of freedom: "
             << dof_handler.n_dofs()
             << std::endl;
