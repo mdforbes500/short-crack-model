@@ -25,11 +25,7 @@ void ShortCrack<dim>::make_grid ()
   std::ifstream f("../resources/input/mesh.msh");
   gridin.read_msh(f);
 
-  //Ouptut mesh file as an EPS file
-  std::ofstream out ("../resources/output/initial_grid.eps");
-  dealii::GridOut grid_out;
-  grid_out.write_eps(triangulation, out);
-  std::cout << "Grid written to 'resources/output/initial_grid.eps'" << std::endl;
+  std::cout << "Reading mesh from file..." << std::endl;
 }
 
 template <int dim>
@@ -57,7 +53,8 @@ void ShortCrack<dim>::setup_system ()
   std::ofstream out("../resources/output/sparsity_pattern.svg");
   sparsity_pattern.print_svg(out);
 
-  std::cout << "   Number of degrees of freedom: "
+  std::cout << "Setting up system..." << std::endl;
+            << "   Number of degrees of freedom: "
             << dof_handler.n_dofs()
             << std::endl;
 }
@@ -202,12 +199,12 @@ void ShortCrack<dim>::refine_grid()
                                                           0.3, 0.03);
   triangulation.execute_coarsening_and_refinement();
 
-  /*std::cout << "   Number of active cells: "
+  std::cout << "   Number of active cells: "
             << triangulation.n_active_cells()
             << std::endl
             << "   Total number of cells: "
             << triangulation.n_cells()
-            << std::endl;*/
+            << std::endl;
 }
 
 template <int dim>
@@ -227,6 +224,8 @@ void ShortCrack<dim>::output_results (const unsigned int cycle) const
   filename << "../resources/output/solution-" << cycle << ".eps";
   std::ofstream output (filename.str().c_str());
   data_out.write_eps (output);
+
+  std::cout << "Writing visualization..." << std::endl;
 }
 
 template <int dim>
@@ -248,4 +247,5 @@ void ShortCrack<dim>::run ()
     solve ();
     output_results (cycle);
   }
+  std::cout << "Done! Have a nice day. :)" << std::endl;
 }
