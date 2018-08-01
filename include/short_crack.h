@@ -24,6 +24,7 @@
 #include <deal.II/lac/precondition.h>
 
 #include <deal.II/numerics/data_out.h>
+#include <deal.II/lac/solver_control.h>
 
 #include <deal.II/lac/constraint_matrix.h>
 #include <deal.II/grid/grid_refinement.h>
@@ -39,6 +40,7 @@ class ShortCrack
 public:
   ShortCrack ();    //constructor
   ~ShortCrack();    //destructor
+  
   void run ();      //run script
 
 private:
