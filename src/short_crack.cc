@@ -25,7 +25,7 @@ void ShortCrack<dim>::make_grid ()
   std::ifstream f("../resources/input/mesh.msh");
   gridin.read_msh(f);
 
-  std::cout << "Reading mesh from file..." << std::endl;
+  std::cout << "   Reading mesh from file..." << std::endl;
 }
 
 template <int dim>
@@ -37,10 +37,15 @@ void ShortCrack<dim>::setup_system ()
   constraints.clear();
   dealii::DoFTools::make_hanging_node_constraints(dof_handler, constraints);
 
+  //Apply Dirichlet boundary conditions
+  dealii::VectorTools::interpolate_boundary_values (dof_handler,
+                                            0,
+                                            BoundaryValues<dim>(),
+                                            constraints);
   constraints.close();
 
   dealii::DynamicSparsityPattern dsp(dof_handler.n_dofs(), dof_handler.n_dofs());
-  dealii::DoFTools::make_sparsity_pattern (dof_handler, dsp);
+  dealii::DoFTools::make_sparsity_pattern (dof_handler, dsp, constraints, /* keep constrained dofs = */ true);
   constraints.condense(dsp);
   sparsity_pattern.copy_from(dsp);
 
@@ -53,7 +58,7 @@ void ShortCrack<dim>::setup_system ()
   std::ofstream out("../resources/output/sparsity_pattern.svg");
   sparsity_pattern.print_svg(out);
 
-  std::cout << "Setting up system..." << std::endl
+  std::cout << "   Setting up system..." << std::endl
             << "   Number of degrees of freedom: "
             << dof_handler.n_dofs()
             << std::endl;
@@ -66,7 +71,7 @@ void ShortCrack<dim>::assemble_system ()
   dealii::QGauss<dim-1> face_quadrature_formula(3);
 
   const unsigned int   n_q_points    = quadrature_formula.size();
-  const unsigned int   n_face_q_points    = face_quadrature_formula.size();
+  //const unsigned int   n_face_q_points    = face_quadrature_formula.size();
 
   const unsigned int   dofs_per_cell = fe.dofs_per_cell;
 
@@ -140,31 +145,10 @@ void ShortCrack<dim>::assemble_system ()
               }
 */
       cell->get_dof_indices (local_dof_indices);
-
-      for (unsigned int i=0; i<dofs_per_cell; ++i)
-        {
-          for (unsigned int j=0; j<dofs_per_cell; ++j)
-            system_matrix.add (local_dof_indices[i],
-                               local_dof_indices[j],
-                               cell_matrix(i,j));
-
-          system_rhs(local_dof_indices[i]) += cell_rhs(i);
-          constraints.distribute_local_to_global(cell_matrix, cell_rhs,
-                                                 local_dof_indices, system_matrix,
-                                                 system_rhs);
-        }
+      constraints.distribute_local_to_global(cell_matrix, cell_rhs,
+                                             local_dof_indices, system_matrix,
+                                             system_rhs);
     }
-
-  //Apply and handle Dirichlet boundary conditions
-  std::map<dealii::types::global_dof_index,double> boundary_values;
-  dealii::VectorTools::interpolate_boundary_values (dof_handler,
-                                            0,
-                                            BoundaryValues<dim>(),
-                                            boundary_values);
-  dealii::MatrixTools::apply_boundary_values (boundary_values,
-                                      system_matrix,
-                                      solution,
-                                      system_rhs);
 }
 
 template <int dim>
@@ -225,7 +209,7 @@ void ShortCrack<dim>::output_results (const unsigned int cycle) const
   std::ofstream output (filename.str().c_str());
   data_out.write_eps (output);
 
-  std::cout << "Writing visualization..." << std::endl;
+  std::cout << "   Writing visualization..." << std::endl;
 }
 
 template <int dim>
