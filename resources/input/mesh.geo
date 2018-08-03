@@ -34,3 +34,13 @@ Transfinite Surface {1} = {4, 3, 2, 1};
 Transfinite Line {1, 3, 4, 2} = 33 Using Progression 1;
 //+
 Recombine Surface {1};
+//+
+Transfinite Line {1} = 1 Using Progression 1;
+//+
+Transfinite Line {3} = 1 Using Progression 1;
+//+
+Transfinite Line {4} = 1 Using Progression 1;
+//+
+Transfinite Line {2} = 1 Using Progression 1;
+//+
+Transfinite Line {1, 3, 4, 2} = 2 Using Progression 1;
