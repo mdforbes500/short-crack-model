@@ -1,5 +1,5 @@
-#ifndef SHORTCRACK_H
-#define SHORTCRACK_H
+#ifndef LAPLACE_H
+#define LAPLACE_H
 
 #include <deal.II/dofs/dof_handler.h>
 #include <deal.II/grid/grid_generator.h>
@@ -40,7 +40,7 @@ class ShortCrack
 public:
   ShortCrack ();    //constructor
   ~ShortCrack();    //destructor
-  
+
   void run ();      //run script
 
 private:

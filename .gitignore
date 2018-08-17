@@ -48,5 +48,5 @@ CTestTestfile.cmake
 *.svg
 *.geo
 
-# MacOSX Filesystem 
+# MacOSX Filesystem
 .DS_Store

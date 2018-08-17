@@ -5,7 +5,7 @@
 template <int dim>
 ShortCrack<dim>::ShortCrack ()
   :
-  fe (2),
+  fe (dealii::FE_Q<dim>(1), dim),
   dof_handler (triangulation)
 {}
 
@@ -18,8 +18,8 @@ ShortCrack<dim>::~ShortCrack()
 template <int dim>
 void ShortCrack<dim>::make_grid ()
 {
-  //Reads GMSH type file in and processes it.
-  //Requires a square transfinite mesh from GMSH to work.
+  // Reads GMSH type file in and processes it.
+  // Requires a square transfinite mesh from GMSH to work.
   dealii::GridIn<dim> gridin;
   gridin.attach_triangulation(triangulation);
   std::ifstream f("../resources/input/mesh.msh");
@@ -31,33 +31,40 @@ void ShortCrack<dim>::make_grid ()
 template <int dim>
 void ShortCrack<dim>::setup_system ()
 {
+  // Distribute degrees of freedom
   dof_handler.distribute_dofs (fe);
-  dealii::DoFRenumbering::Cuthill_McKee (dof_handler);
+  dealii::DoFRenumbering::Cuthill_McKee (dof_handler);    //optimize w/ C-M
 
+  // Set up hanging node contraints for mesh refinement
   constraints.clear();
   dealii::DoFTools::make_hanging_node_constraints(dof_handler, constraints);
 
-  //Apply Dirichlet boundary conditions
+  // Apply Dirichlet boundary conditions
+  // BC's held in the BoundaryValues class
   dealii::VectorTools::interpolate_boundary_values (dof_handler,
                                             0,
                                             BoundaryValues<dim>(),
                                             constraints);
+  // Close hanging node constraints
   constraints.close();
 
+  // Create sparsity pattern matrix and condense hanging nodes
   dealii::DynamicSparsityPattern dsp(dof_handler.n_dofs(), dof_handler.n_dofs());
-  dealii::DoFTools::make_sparsity_pattern (dof_handler, dsp, constraints, /* keep constrained dofs = */ true);
+  dealii::DoFTools::make_sparsity_pattern (dof_handler, dsp, constraints,
+                                           /* keep constrained dofs = */ true);
   constraints.condense(dsp);
   sparsity_pattern.copy_from(dsp);
 
-  system_matrix.reinit (sparsity_pattern);
+  // Reinitilize full eqution: A, U, & F
+  system_matrix.reinit (sparsity_pattern);    // A -> global stiffness matrix
+  solution.reinit (dof_handler.n_dofs());     // U -> global nodes vector
+  system_rhs.reinit (dof_handler.n_dofs());   // F -> global force vector
 
-  solution.reinit (dof_handler.n_dofs());
-  system_rhs.reinit (dof_handler.n_dofs());
-
-  //Output sparsity pattern image for review
+  // Output sparsity pattern image for review
   std::ofstream out("../resources/output/sparsity_pattern.svg");
   sparsity_pattern.print_svg(out);
 
+  // Print the numbber of DOF in system
   std::cout << "   Setting up system..." << std::endl
             << "   Number of degrees of freedom: "
             << dof_handler.n_dofs()
@@ -67,33 +74,59 @@ void ShortCrack<dim>::setup_system ()
 template <int dim>
 void ShortCrack<dim>::assemble_system ()
 {
-  dealii::QGauss<dim>  quadrature_formula(3);
-  dealii::QGauss<dim-1> face_quadrature_formula(3);
+  // Setup quadrature for elements and faces of elements
+  // Parameter of QGauss is order of polynomial
+  dealii::QGauss<dim>  quadrature_formula(2);
+  dealii::QGauss<dim-1> face_quadrature_formula(2);
 
+  /*
+   * Constants for assembly:
+   *   Number of quadrature points
+   *   Number of quadrature points on the external faces
+   *   Number of degrees of freedom of each element
+   */
   const unsigned int   n_q_points    = quadrature_formula.size();
   //const unsigned int   n_face_q_points    = face_quadrature_formula.size();
-
   const unsigned int   dofs_per_cell = fe.dofs_per_cell;
 
+  /*
+   * Information for each element:
+   *   CELL_MATRIX: local stiffness matrix
+   *   CELL_RHS: local force vector
+   *   LOCAL_DOF_INDICIES: local node numbering
+   */
   dealii::FullMatrix<double>   cell_matrix (dofs_per_cell, dofs_per_cell);
   dealii::Vector<double>       cell_rhs (dofs_per_cell);
-
   std::vector<dealii::types::global_dof_index> local_dof_indices (dofs_per_cell);
 
+  // Applying the quadrature formula to the FE-element
+  // Updating the values, gradients, quadrature points, and Jacobian of element
   dealii::FEValues<dim> fe_values (fe, quadrature_formula,
-                           dealii::update_values   | dealii::update_gradients |
-                           dealii::update_quadrature_points | dealii::update_JxW_values);
+                  dealii::update_values | dealii::update_gradients |
+                  dealii::update_quadrature_points | dealii::update_JxW_values);
 
+  // Doing the same thing for the elements on the boundaries
   dealii::FEFaceValues<dim> fe_face_values (fe, face_quadrature_formula,
-                           dealii::update_values   | dealii::update_gradients |
-                           dealii::update_quadrature_points | dealii::update_JxW_values);
+                  dealii::update_values | dealii::update_gradients |
+                  dealii::update_quadrature_points | dealii::update_JxW_values);
 
-  const RightHandSide<dim> right_hand_side;
-  std::vector<double> rhs_values(n_q_points);
+  //Force vector object
+  const RightHandSide<dim> rhs;
 
+  //Values for lambda and mu (the Lame functions)
+  std::vector<double>   lambda_values(n_q_points);
+  std::vector<double>   mu_values(n_q_points);
+
+  //Sample constant values for the Lame functions
+  dealii::Functions::ConstantFunction<dim> lambda(1.), mu(1.);    //both are 1.0
+
+  //Force vector values allocated from a
+  std::vector<Tensor<1, dim> > rhs_values(n_q_points);
+
+  //Begin global assembly loop
   typename dealii::DoFHandler<dim>::active_cell_iterator
-  cell = dof_handler.begin_active(),
-  endc = dof_handler.end();
+                                    cell = dof_handler.begin_active(),
+                                    endc = dof_handler.end();
   for (; cell != endc; ++cell)
     {
       cell_matrix = 0;
@@ -101,26 +134,54 @@ void ShortCrack<dim>::assemble_system ()
 
       fe_values.reinit (cell);
 
-      right_hand_side.value_list (fe_values.get_quadrature_points(),
-                                  rhs_values);
+      lambda.value_list(fe_values.get_quadrature_points(), lambda_values);
+      mu.value_list(fe_values.get_quadrature_points(), mu_values);
+      rhs.right_hand_side(fe_values.get_quadrature_points(), rhs_values);
 
-//      const BoundaryValues<dim> edges;
+  // const BoundaryValues<dim> edges; // For Neumann B.C.'s
 
-      for (unsigned int q_point=0; q_point<n_q_points; ++q_point)
-        for (unsigned int i=0; i<dofs_per_cell; ++i)
+      // Assembling the vector-valued elements into global stiffness matrix
+      for (unsigned int i=0; i<dofs_per_cell; ++i)
+      {
+        const unsigned int
+        component_i = fe.system_to_component_index(i).first;
+
+        for (unsigned int j=0; j<dofs_per_cell; ++j)
           {
-            for (unsigned int j=0; j<dofs_per_cell; ++j)
-            //Assembly of stiffness matrix
-              cell_matrix(i,j) += (fe_values.shape_grad (i, q_point) *
-                                   fe_values.shape_grad (j, q_point) *
-                                   fe_values.JxW (q_point));
-            //Assembly of force vector/rhs vector
+            const unsigned int
+            component_j = fe.system_to_component_index(j).first;
+
+            for (unsigned int q_point=0; q_point<n_q_points; ++q_point)
+            {
+              cell_matrix(i,j)
+              +=
+                (
+                 (fe_values.shape_grad (i, q_point)[component_i] *
+                  fe_values.shape_grad (j, q_point)[component_j] *
+                  lambda_values[q_point])
+                  +
+                 (fe_values.shape_grad (i, q_point)[component_j]*
+                  fe_values.shape_grad (j, q_point)[component_i]*
+                  mu_values[q_point])
+                  +
+                 ((componnt_i == component_j) ?
+                  (fe_values.shape_grad (i, q_point)*
+                   fe_values.shape_grad (j, q_point)*
+                   mu_values[q_point])  :
+                 0)
+               )
+               *
+               fe_values.JxW(q_point);
+             }
+           }
+         }
+            //Assembly of global force vector
             cell_rhs(i) += (fe_values.shape_value (i, q_point) *
                             right_hand_side.value (
                               fe_values.quadrature_point (q_point)) *
-                              fe_values.JxW (q_point)
-                            );
-          }
+                              fe_values.JxW (q_point));
+
+
 /*        //Apply and handle Neumann boundary conditions
         for (unsigned int face_number=0; face_number<dealii::GeometryInfo<dim>::faces_per_cell; ++face_number)
           if (cell->face(face_number)->at_boundary()
