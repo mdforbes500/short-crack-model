@@ -24,9 +24,12 @@ Additionally, the _deal-ii_ library need to find the _Trilinos_, _PetSc_, _p4est
 Once all the dependencies are installed, running the package is fairly straight forward.
 
 ```
-cd short-crack-model/build
+cd short-crack-model/examples/laplace
+mkdir build
+cd build
 cmake ..
-make
+make install
+cd ../bin
 ./short-crack-model
 ```
 
