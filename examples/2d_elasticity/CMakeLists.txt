@@ -1,5 +1,5 @@
 # Set the name of the project and target:
-SET(TARGET "short-crack-model")
+SET(TARGET "elasticity")
 
 # Include headers
 INCLUDE_DIRECTORIES(include)
@@ -34,5 +34,9 @@ IF(NOT ${deal.II_FOUND})
 ENDIF()
 
 DEAL_II_INITIALIZE_CACHED_VARIABLES()
+
 PROJECT(${TARGET})
-DEAL_II_INVOKE_AUTOPILOT()
+
+ADD_EXECUTABLE(${TARGET} src/main.cc)
+DEAL_II_SETUP_TARGET(${TARGET})
+INSTALL(TARGETS ${TARGET} DESTINATION ${CMAKE_BINARY_DIR}/../bin)

@@ -30,18 +30,12 @@
 *.exe
 *.out
 *.app
-short-crack-model
+bin/*
+examples/*/bin/*
+
 
 # CMake
-CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Testing
-Makefile
-cmake_install.cmake
-install_manifest.txt
-compile_commands.json
-CTestTestfile.cmake
+build/*
 
 # Visualizations
 *.eps
