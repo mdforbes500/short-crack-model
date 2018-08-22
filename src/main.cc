@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstring>
+#include <fstream>
+#include <string>
 
 int main(int argc, char* argv[])
 {
@@ -47,7 +49,16 @@ int main(int argc, char* argv[])
     // List all Examples
     else if (std::strcmp(argv[2], "-E") == 0)
     {
-      std::cout << "list example" << std::endl;
+      std::system("../scripts/dindex.sh");
+      std::cout << std::endl;
+      std::ifstream fin("../build/examples_list.txt");
+      std::string temp;
+      while (std::getline(fin, temp))
+      {
+        std::cout << temp << std::endl;
+      }
+      fin.close();
+      std::cout << std::endl;
     }
 
     // For invalid flags
