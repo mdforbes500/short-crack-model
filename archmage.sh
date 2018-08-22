@@ -12,8 +12,8 @@ mkdir -p ${bin_dir}
 #Setup for the examples
 for entry in ${examples_dir}/*
 do
-  mkdir -p ${examples_dir}/${entry}/${build_dir}
-  mkdir -p ${examples_dir}/${entry}/${bin_dir}
+  mkdir -p ${entry}/${build_dir}
+  mkdir -p ${entry}/${bin_dir}
 done
 
 #Permission modifiction for other scripts
@@ -24,5 +24,9 @@ cd ${build_dir}
 cmake ..
 make install
 rm -f scmod
+
+#Setting up list of examples
+cd ../${scripts_dir}
+./dindex.sh
 
 echo "Setup of SCMOD complete. Ready to run."

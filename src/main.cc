@@ -22,9 +22,21 @@ int main(int argc, char* argv[])
               << "-E             Examples" <<std::endl
               << std::endl;
   }
+
+  // Run a file
   else if (std::strcmp(argv[1], "--run") == 0)
   {
     std::cout << "running example" << std::endl;
+    std::ifstream fin("../build/examples_list.txt");
+    std::string temp;
+    while (std::getline(fin, temp))
+    {
+      if(std::strcmp(temp.c_str(), argv[2]) == 0)
+      {
+        std::system((std::string("../scripts/casting.sh ") + argv[2]).c_str());
+      }
+    }
+    fin.close();
   }
 
   // For listing thirdparty packages and examples
