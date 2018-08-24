@@ -24,19 +24,36 @@ Additionally, the _deal-ii_ library need to find the _Trilinos_, _PetSc_, _p4est
 Once all the dependencies are installed, running the package is fairly straight forward.
 
 ```
-cd short-crack-model/examples/laplace
-mkdir build
-cd build
-cmake ..
-make install
-cd ../bin
-./short-crack-model
+cd short-crack-model
+./archmage.sh
+cd bin
+export PATH=$PATH:$(pwd)
+schmod --help
 ```
 
-This will run the _short-crack-model_. Other examples can be run in the same method.
+This will run the _short-crack-model_'s help function. The examples can be listed with
+
+```
+cd short-crack-model/bin
+schmod --list -E
+```
+
+To run an example,
+
+```
+schmod --run [example]
+```
+where `[example]` is the name given from the list.
+```
+
+Additionally, the results can be viewed through,
+
+```
+schmod --view [example]
+```
 
 #### Changing the input mesh files
-To use another mesh file, please save a new `mesh.msh` type file in the directory `short-crack-model/resources/input`.
+To use another mesh file, please save a new `mesh.msh` type file in the directory `resources/input` for the given example .
 
 #### Handling boundary conditions
 The boundary conditions (both essential and natural) should be indicated in the `.msh` file.

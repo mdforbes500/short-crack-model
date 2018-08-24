@@ -29,4 +29,10 @@ rm -f scmod
 cd ../${scripts_dir}
 ./dindex.sh
 
+#Export PATH
+cd ..
+sudo echo $(pwd)/${bin_dir} >> sudo /etc/paths
+echo "PATH set to " $(pwd)/${bin_dir}
+
 echo "Setup of SCMOD complete. Ready to run."
+echo "Type scmod --help for usage."
