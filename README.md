@@ -44,7 +44,6 @@ To run an example,
 schmod --run [example]
 ```
 where `[example]` is the name given from the list.
-```
 
 Additionally, the results can be viewed through,
 
