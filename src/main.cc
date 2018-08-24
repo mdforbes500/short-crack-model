@@ -100,8 +100,25 @@ int main(int argc, char* argv[])
   // For viewing results
   else if (std::strcmp(argv[1], "--view") == 0)
   {
-    std::cout << "view" << std::endl;
-
+    std::cout << "Searching examples..." << std::endl;
+    std::ifstream fin("../build/examples_list.txt");
+    std::string temp;
+    int found = 0;
+    while (std::getline(fin, temp))
+    {
+      if(std::strcmp(temp.c_str(), argv[2]) == 0)
+      {
+        std::cout << "   Displaying results " << temp.c_str() << std::endl;
+        std::system((std::string("../scripts/display.sh ") + argv[2]).c_str());
+        found = 1;
+      }
+    }
+    fin.close();
+    if (found == 0)
+    {
+      std::cerr << "   Example not found: please check the list of examples" << std::endl
+                << "     Try running `scmod --list -E` to see list of examples" << std::endl;
+    }
   }
 
   // Usage errors
