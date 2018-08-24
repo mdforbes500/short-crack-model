@@ -1,29 +1,30 @@
 #!/bin/bash
 
-example_dir../examples/$1/resources/output
-solutions=solution
-grids=grid
-
-cd ${example_dir}
+example_dir=../examples/$1/resources/output
 
 echo "   These are the possible results:"
 
-for entry in ${example_dir}
+for entry in ${example_dir}/*
 do
-  echo "     *" ${entry}
+  echo "     *" $(basename ${entry})
 done
 
 echo "    Which would you like to view?"
 
 read varname
 
-for entry in ${example_dir}
+found=0
+
+for entry in ${example_dir}/*
 do
-  if [[ ${varname} == ${entry} ]]; then
+  if [[ ${example_dir}/${varname} == ${entry} ]]; then
     echo "    Opening..."
-    open ${varname}
-  else
-    echo "    Not a valid filehandle."
-    echo "    Please select a valid filehandle for viewing."
+    open ${example_dir}/${varname}
+    found=1
   fi
 done
+
+if [ ${found} -eq 0 ]; then
+  echo "    Not a valid filehandle."
+  echo "    Please select a valid filehandle for viewing."
+fi
