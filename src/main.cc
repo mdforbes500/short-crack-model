@@ -12,10 +12,10 @@ int main(int argc, char* argv[])
               << "            "<< argv[0] << " [options]" << std::endl << std::endl
               << "Options:" << std::endl << std::endl
               << "--help                  Prints usage information and exits" << std::endl
-              << "--run [example | path]  Builds and runs an example, then exits" << std::endl
+              << "--run [example]         Builds and runs an example, then exits" << std::endl
               << "--list [flags]          Lists all examples and exits" << std::endl
-              << "install [flags] [path]  Installs a thirdparty package, then exits" << std::endl
-              << "--view [example | path] Displays results of example, then exits" << std::endl
+              << "install [flags]         Installs a thirdparty package, then exits" << std::endl
+              << "--view [example]        Displays results of example, then exits" << std::endl
               << std::endl
               << "Flags:" << std::endl << std::endl
               << "-T             Thirdparty packages" << std::endl
@@ -23,20 +23,28 @@ int main(int argc, char* argv[])
               << std::endl;
   }
 
-  // Run a file
+  // Run an example
   else if (std::strcmp(argv[1], "--run") == 0)
   {
-    std::cout << "running example" << std::endl;
+    std::cout << "Searching examples..." << std::endl;
     std::ifstream fin("../build/examples_list.txt");
     std::string temp;
+    int found = 0;
     while (std::getline(fin, temp))
     {
       if(std::strcmp(temp.c_str(), argv[2]) == 0)
       {
+        std::cout << "   Running " << temp.c_str() << std::endl;
         std::system((std::string("../scripts/casting.sh ") + argv[2]).c_str());
+        found = 1;
       }
     }
     fin.close();
+    if (found == 0)
+    {
+      std::cerr << "   Example not found: please check the list of examples" << std::endl
+                << "     Try running `scmod --list -E` to see list of examples" << std::endl;
+    }
   }
 
   // For listing thirdparty packages and examples
@@ -93,6 +101,7 @@ int main(int argc, char* argv[])
   else if (std::strcmp(argv[1], "--view") == 0)
   {
     std::cout << "view" << std::endl;
+
   }
 
   // Usage errors
